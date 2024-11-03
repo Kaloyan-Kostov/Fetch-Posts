@@ -18,16 +18,19 @@ const Posts = () => {
   }, []);
   return (
     <div>
-      <h1>Posts</h1>
-      {posts.map((post) => {
-        return (
-          <div id={post.id}>
-            {post.title}
-            <br />
-            <br />
-          </div>
-        );
-      })}
+      <h1 className="text-left mb-6">Posts</h1>
+      <div>
+        {posts.map((post) => {
+          return (
+            <div
+              id={post.id}
+              className="mb-2 border rounded-[8px] max-w-64 py-4"
+            >
+              {post.title}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
