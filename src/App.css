@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.navbar.active {
+  background: linear-gradient(90deg, rgb(66, 2, 194) 0%, rgb(0, 78, 194) 100%);
+}
+
+.navbar {
+  background: transparent;
+}

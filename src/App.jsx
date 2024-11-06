@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import Posts from "./components/Posts/Posts";
-import Users from "./components/Users/Users";
+import CreatePost from "./components/CreatePost/CreatePost";
 
 function App() {
   return (
     <div>
-      {/* <Users /> */}
       <Posts />
+      {/* <CreatePost /> */}
     </div>
   );
 }
