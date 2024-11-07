@@ -4,6 +4,7 @@ import Hero from "../Hero/Hero.jsx";
 import FilterUser from "../FilterUser/FilterUser.jsx";
 import FilterButtons from "../FilterButtons/FilterButtons.jsx";
 import PostList from "../PostList/PostList.jsx";
+import CreatePost from "../CreatePost/CreatePost.jsx";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -14,6 +15,7 @@ const Posts = () => {
   const [userId, setUserId] = useState(10);
   const [isClicked, setIsClicked] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [createPost, setCreatePost] = useState(false);
 
   useEffect(() => {
     const loadFetchedData = async () => {
@@ -43,10 +45,19 @@ const Posts = () => {
   const handleFilteredPosts = () => {
     setIsFiltered(!isFiltered);
     setIsDisplayed(false);
+    setCreatePost(false);
   };
   const handleShowPosts = () => {
     setIsDisplayed(!isDisplayed);
     setIsFiltered(false);
+    setCreatePost(false);
+  };
+
+  const handleCreatePost = () => {
+    setCreatePost((prevCreatePost) => !prevCreatePost);
+    setIsDisplayed(false);
+    setIsFiltered(false);
+    setIsClicked(false);
   };
 
   const incrementUserId = () => {
@@ -75,43 +86,50 @@ const Posts = () => {
           handleFilteredPosts={handleFilteredPosts}
           handleRecentPosts={handleRecentPosts}
           isClicked={isClicked}
+          handleCreatePost={handleCreatePost}
         />
       </div>
+      {createPost ? (
+        <CreatePost />
+      ) : (
+        <div>
+          <Hero isDisplayed={isDisplayed} isFiltered={isFiltered} />
+          <FilterUser
+            userId={userId}
+            incrementUserId={incrementUserId}
+            decrementUserId={decrementUserId}
+            isFiltered={isFiltered}
+            isClicked={isClicked}
+          />
 
-      <Hero isDisplayed={isDisplayed} isFiltered={isFiltered} />
-      <FilterUser
-        userId={userId}
-        incrementUserId={incrementUserId}
-        decrementUserId={decrementUserId}
-        isFiltered={isFiltered}
-        isClicked={isClicked}
-      />
-
-      <div className="flex flex-col items-center gap-8">
-        {isFiltered && isEmpty && (
-          <div className=" h-[20vh] text-[16px]">
-            <hr />
-            <br />
-            You are currently viewing Posts filtered by:
-            <br />
-            <span className="text-[20px]">- Recency</span>
-            <br />
-            <span className="text-[20px]">- userId</span> <br />
-            In order to display more posts, click ❝Apply filter by All Posts❞.
+          <div className="flex flex-col items-center gap-8">
+            {isFiltered && isEmpty && (
+              <div className=" h-[20vh] text-[16px]">
+                <hr />
+                <br />
+                You are currently viewing Posts filtered by:
+                <br />
+                <span className="text-[20px]">- Recency</span>
+                <br />
+                <span className="text-[20px]">- userId</span> <br />
+                In order to display more posts, click ❝Apply filter by All
+                Posts❞.
+              </div>
+            )}
+            {isDisplayed || isFiltered ? (
+              <div className="flex flex-col items-center gap-8 mt-16">
+                <PostList
+                  posts={posts}
+                  users={users}
+                  isFiltered={isFiltered}
+                  userId={userId}
+                  isDisplayed={isDisplayed}
+                />
+              </div>
+            ) : null}
           </div>
-        )}
-        {isDisplayed || isFiltered ? (
-          <div className="flex flex-col items-center gap-8 mt-16">
-            <PostList
-              posts={posts}
-              users={users}
-              isFiltered={isFiltered}
-              userId={userId}
-              isDisplayed={isDisplayed}
-            />
-          </div>
-        ) : null}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

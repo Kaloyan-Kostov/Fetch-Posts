@@ -5,6 +5,7 @@ const FilterButtons = ({
   handleFilteredPosts,
   handleRecentPosts,
   isClicked,
+  handleCreatePost,
 }) => {
   return (
     <div>
@@ -21,7 +22,10 @@ const FilterButtons = ({
         >
           {isFiltered ? "Hide Filtered Posts" : "Filtered Posts"}
         </button>
-        <button className="rounded-sm p-1 hover:scale-105 transition-all">
+        <button
+          className="rounded-sm p-1 hover:scale-105 transition-all"
+          onClick={handleCreatePost}
+        >
           Create Post
         </button>
       </div>
