@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchPosts, fetchUsers } from "../../helpers/dataFetcher.js";
+import {
+  fetchPosts,
+  fetchUsers,
+  postRequest,
+} from "../../helpers/dataFetcher.js";
 import Hero from "../Hero/Hero.jsx";
 import FilterUser from "../FilterUser/FilterUser.jsx";
 import FilterButtons from "../FilterButtons/FilterButtons.jsx";

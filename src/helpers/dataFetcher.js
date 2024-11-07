@@ -19,3 +19,32 @@ export const fetchUsers = async () => {
     console.log("Error fetching users..", e);
   }
 };
+
+export const postRequest = async ({
+  title = "",
+  body = "",
+  userId = 10,
+} = {}) => {
+  try {
+    const response = await fetch(`${FETCH_URL}/posts`, {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        body,
+        userId,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create post");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.log("Error creating post:", e);
+  }
+};
