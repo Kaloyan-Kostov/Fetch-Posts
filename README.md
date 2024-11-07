@@ -1,8 +1,15 @@
-# React + Vite
+# A SPA for fetching mock data
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Overview
 
-Currently, two official plugins are available:
+![](./public/Desktop-Mobile.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Links
+
+- You can take a look [here](https://kaloyan-kostov.github.io/Fetch-Posts/).
+
+## Built with
+
+- Vite
+- React
+- Tailwind CSS

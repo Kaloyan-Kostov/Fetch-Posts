@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  fetchPosts,
-  fetchUsers,
-  postRequest,
-} from "../../helpers/dataFetcher.js";
+import { fetchPosts, fetchUsers } from "../../helpers/dataFetcher.js";
 import Hero from "../Hero/Hero.jsx";
 import FilterUser from "../FilterUser/FilterUser.jsx";
-import FilterButtons from "../FilterButtons/FilterButtons.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
 import PostList from "../PostList/PostList.jsx";
 import CreatePost from "../CreatePost/CreatePost.jsx";
 
@@ -83,7 +79,7 @@ const Posts = () => {
   return (
     <div>
       <div className="sticky top-0 z-50">
-        <FilterButtons
+        <Navbar
           isDisplayed={isDisplayed}
           isFiltered={isFiltered}
           handleShowPosts={handleShowPosts}

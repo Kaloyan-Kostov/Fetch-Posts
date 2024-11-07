@@ -49,7 +49,7 @@ const CreatePost = () => {
   return (
     <div className="relative grid justify-center items-center border text-white text-center min-h-screen">
       <form
-        className="flex flex-col gap-4 w-full max-w-lg sm:w-[70%] md:w-[50%] lg:w-[100%] p-4"
+        className="flex flex-col gap-4 w-full max-w-lg sm:w-[70%] md:w-[80%] lg:w-[100%] p-4"
         onSubmit={handleSubmit}
       >
         <div className="text-[28px] sm:text-[36px] mb-4">
@@ -71,7 +71,7 @@ const CreatePost = () => {
           className="border rounded-sm p-3 w-full h-32 resize-none text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           name="body"
           id="body"
-          placeholder="Content of the post.."
+          placeholder="Content of the post"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
@@ -83,7 +83,13 @@ const CreatePost = () => {
           Submit
         </button>
 
-        {statusMessage && <p className="text-red-500 mt-2">{statusMessage}</p>}
+        <p
+          className={`mt-2 ${
+            statusMessage.includes("Please") ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {statusMessage}
+        </p>
 
         {newPosts.length > 0 && (
           <div className="mt-6 flex flex-col gap-4">
